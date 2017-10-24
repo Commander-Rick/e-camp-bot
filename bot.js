@@ -35,5 +35,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
             // Just add any case commands if you want to..
          }
+         args = args.splice(1);
+        switch(cmd) {
+            // !ping
+            case 'yee':
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'https://www.youtube.com/watch?v=q6EoRBvdVPQ'
+                });
+            break;
      }
 });
