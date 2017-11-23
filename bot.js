@@ -1,39 +1,37 @@
-var Discord = require('discord.io');
-var logger = require('winston');
-var auth = require('./auth.json');
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console, {
-    colorize: true
+/* e-camp-bot, */
+
+// Import the discord.js module
+const Discord = require('discord.js');
+
+// Create an instance of a Discord client
+const client = new Discord.Client();
+
+// The token of your bot - https://discordapp.com/developers/applications/me
+const token = 'MzcyMTYwODE0NTQ4Nzc5MDEw.DNAVCg.N5GQZvbyV8Y6DQ6J3NjtIbRkj7o';
+
+// The ready event is vital, it means that your bot will only start reacting to information
+// from Discord _after_ ready is emitted
+client.on('ready', () => {
+  console.log('I am ready!');
 });
-logger.level = 'debug';
-// Initialize Discord Bot
-var bot = new Discord.Client({
-   token: auth.token,
-   autorun: true
+
+// Create an event listener for messages
+client.on('message', message => {
+  // If the message is "yee"
+  if (message.content === '!yee') {
+    // Send "pong" to the same channel
+    message.channel.send('https://youtube.com/watch?v=myvideo');
+  }
 });
-bot.on('ready', function (evt) {
-    logger.info('Connected');
-    logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+
+client.on('message', message,  => {
+  // If the message is "ping"
+  if (message.content === '!nick') {
+    // Send "pong" to the same channel
+     setNickname(nick, reason) {
+    return this.edit({ nick }, reason);
+  }
+  }
 });
-bot.on('message', function (user, userID, channelID, message, evt) {
-    // Our bot needs to know if it will execute a command
-    // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) == '!') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
-       
-        args = args.splice(1);
-        switch(cmd) {
-            // !ping
-            case 'yee':
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'https://www.youtube.com/watch?v=q6EoRBvdVPQ'
-                });
-            break;
-            // Just add any case commands if you want to..
-         }
-     }
-});
+// Log our bot in
+client.login(token);
