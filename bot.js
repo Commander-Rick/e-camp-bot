@@ -1,5 +1,6 @@
 /* e-camp-bot, */
-
+// Log our bot in
+client.login(token);
 // Import the discord.js module
 const Discord = require('discord.js');
 
@@ -7,7 +8,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 // The token of your bot - https://discordapp.com/developers/applications/me
-const token = 'MzcyMTYwODE0NTQ4Nzc5MDEw.DNAVCg.N5GQZvbyV8Y6DQ6J3NjtIbRkj7o';
+//const token = 'MzcyMTYwODE0NTQ4Nzc5MDEw.DNAVCg.N5GQZvbyV8Y6DQ6J3NjtIbRkj7o';
 
 // The ready event is vital, it means that your bot will only start reacting to information
 // from Discord _after_ ready is emitted
@@ -33,5 +34,4 @@ client.on('message', message,  => {
   }
   }
 });
-// Log our bot in
-client.login(token);
+
